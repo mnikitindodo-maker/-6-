@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Урок 32 — Grammar playground</title>
+<style>
+:root{--ink:#202932;--muted:#596674;--orange:#ffbc52;--blue:#176da5;--green:#227448;--paper:#fffdf6;--line:#d7dfe6}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"DejaVu Sans",sans-serif;font-size:18px;line-height:1.5}button{font:inherit;cursor:pointer;border:2px solid var(--ink);border-radius:13px;background:white;color:var(--ink);padding:12px 18px;min-height:48px}button:hover:not(:disabled){background:#fff1d8}button:focus-visible,a:focus-visible{outline:4px solid #428fd1;outline-offset:4px}button:disabled{cursor:default;opacity:.55}button.primary{background:var(--orange);font-weight:700}button.secondary{border-color:var(--line);background:#f5f8fb}button.small{font-size:16px;padding:8px 14px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(30px,4vw,49px);line-height:1.15;margin-bottom:16px}h2{font-size:clamp(25px,3vw,35px);line-height:1.2}h3{font-size:21px;margin-bottom:8px}.wrap{max-width:1080px;margin:auto;padding:24px}.brand{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:bold;letter-spacing:1px;color:var(--blue);margin-bottom:22px}.cat{font-size:33px;letter-spacing:0}.hero{border:2px solid var(--ink);border-radius:22px;padding:30px;background:white;box-shadow:5px 6px 0 #ffdfaa}.lead{max-width:770px;color:var(--muted);margin-bottom:18px}.tag{display:inline-block;background:#edf4fb;color:var(--blue);border-radius:8px;padding:4px 10px;font-size:14px;font-weight:bold}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:24px 0}.topic{background:white;border:2px solid var(--ink);border-radius:18px;padding:21px;display:flex;flex-direction:column;min-width:0}.topic p{color:var(--muted);font-size:16px}.topic .example{color:var(--ink);font-size:19px;margin:0 0 16px}.topic button{margin-top:auto}.topic .num{font-size:14px;color:var(--blue);font-weight:bold;margin-bottom:8px}.topic.test{background:#edf7ee}.note{color:var(--muted);font-size:15px}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}.progress{height:11px;background:#e2e7ed;border-radius:20px;overflow:hidden;margin:12px 0 24px}.progress>div{height:100%;background:var(--blue);transition:width .2s}.question-card{background:white;border:2px solid var(--ink);border-radius:22px;padding:32px;box-shadow:5px 6px 0 #e6edf4}.sentence{font-size:clamp(27px,4.4vw,43px);font-weight:700;line-height:1.4;margin:20px 0 12px;overflow-wrap:break-word}.blank{color:var(--blue);display:inline-block;min-width:68px;text-align:center;border-bottom:4px solid var(--orange)}.translation{color:var(--muted);font-size:19px}.answers{display:grid;gap:12px;margin-top:26px}.answer{text-align:left;display:flex;align-items:center;gap:17px;font-size:24px;padding:14px 18px}.key{font-size:15px;border:1px solid var(--line);border-radius:7px;padding:2px 9px;color:var(--muted);flex:0 0 auto}.answer.correct{border-color:var(--green);background:#e8f6e9;opacity:1}.answer.wrong{border-color:#b34d3c;background:#fff0ed}.answer.selected{border-color:var(--blue);background:#e9f3ff;opacity:1}.feedback{min-height:58px;margin:20px 0 5px;font-size:18px}.good{color:var(--green);font-weight:bold}.bad{color:#a33526;font-weight:bold}.bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.stat{border:1px solid var(--line);border-radius:15px;padding:18px;background:#f7f9fb;text-align:center}.stat strong{display:block;font-size:34px;color:var(--blue)}.review{padding:18px 0;border-top:1px solid var(--line)}.review p{margin-bottom:8px}.solution{font-size:23px;font-weight:bold;color:var(--green)}.review .small{margin-top:6px}footer{color:var(--muted);font-size:14px;padding:26px 0;text-align:center}dialog{border:2px solid var(--ink);border-radius:22px;padding:0;width:min(620px,calc(100% - 28px));max-height:85vh;color:var(--ink);background:white;box-shadow:6px 7px 0 #ffcf86}dialog::backdrop{background:rgba(26,34,44,.55)}.modal-inner{padding:28px}.modal-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.close{border:0;font-size:26px;padding:0 9px;min-height:42px;background:#f2f4f6}.formula{font-size:25px;font-weight:bold;padding:15px;background:#fff3dc;border-radius:12px;margin:18px 0}.rule-body{font-size:19px}.rule-example{font-size:22px;color:var(--blue)}.modal-answer{border-top:1px solid var(--line);padding-top:16px;margin-top:18px}.rules-list{display:grid;gap:10px}.rules-list button{text-align:left}.hidden,[hidden]{display:none!important}.result-head{font-size:clamp(30px,4vw,45px)}@media(max-width:760px){.topics{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:18px}.hero,.question-card{padding:23px}.stats{gap:8px}.stat{padding:13px 6px}}@media(max-width:480px){.topics{grid-template-columns:1fr}.hero,.question-card{padding:20px}.wrap{padding:14px}.answer{font-size:22px}.stats{grid-template-columns:1fr}.stat{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;text-align:left}.stat strong{font-size:28px}.toolbar .row{gap:7px}.modal-inner{padding:20px}.sentence{font-size:29px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="brand"><span class="cat" aria-hidden="true">🐈</span> ENGLISH · 6 КЛАСС · УРОК 32</div>
+<section id="menu">
+ <div class="hero"><span class="tag">FREE TIME TOGETHER</span><h1 style="margin-top:15px">Grammar playground</h1><p class="lead">Выбирай ответ, вспоминай правило и помогай Фат Коту договориться с друзьями об игре.</p><div class="row"><button class="primary" id="allPractice">Тренировка · 30 вопросов</button><button class="secondary" id="allRules">Короткие правила</button></div><p class="note" style="margin:17px 0 0">В тренировке после ошибки появится правило. Можно попробовать снова. В тесте ответы и пояснения — в конце.</p></div>
+ <div class="topics" id="topics"></div>
+ <p class="note">Без таймера. Клавиши 1–3 выбирают ответ, Enter открывает следующий вопрос, Esc закрывает правило. Всё работает без интернета.</p>
+</section>
+<section id="exercise" hidden>
+ <div class="toolbar"><button id="home" class="small secondary">← В меню</button><div class="row"><span id="modeTag" class="tag"></span><span id="counter"></span></div></div>
+ <div class="progress" role="progressbar" aria-label="Прогресс" aria-valuemin="0" aria-valuemax="100" id="progress"><div id="bar"></div></div>
+ <div class="question-card"><div class="row" style="justify-content:space-between"><span id="topicTag" class="tag"></span><button id="hint" class="small secondary">💡 Короткое правило</button></div><p class="sentence" id="sentence" tabindex="-1"></p><p class="translation" id="translation"></p><div class="answers" id="answers" aria-label="Варианты ответа"></div><div id="feedback" class="feedback" aria-live="polite"></div><div class="bottom"><span id="score" class="note"></span><button id="next" class="primary" disabled>Дальше →</button></div></div>
+</section>
+<section id="results" hidden><div class="hero"><span class="tag">РЕЗУЛЬТАТ</span><h2 id="resultTitle" class="result-head" tabindex="-1" style="margin-top:15px"></h2><p id="resultText"></p><div id="stats" class="stats"></div><div class="row"><button id="retryMistakes" class="primary">Повторить ошибки</button><button id="restart" class="secondary">Пройти ещё раз</button><button id="resultHome" class="secondary">В меню</button></div></div><h2 style="margin-top:30px">Разбор ответов</h2><div id="review"></div></section>
+<footer>Урок 32 · Досуг и игры · like, can, приглашения и времена</footer>
+</main>
+<dialog id="ruleDialog" aria-labelledby="ruleTitle"><div class="modal-inner"><div class="modal-top"><h2 id="ruleTitle"></h2><button class="close" id="closeRule" aria-label="Закрыть правило">×</button></div><div id="ruleContent"></div><button id="ruleOK" class="primary" style="margin-top:18px">Понятно</button></div></dialog>
+<script>
+'use strict';
+const RULES={
+ like:{title:'Что тебе нравится делать?',formula:'like + глагол с -ing',body:'В этих заданиях тренируем модель I like playing…: «Мне нравится играть…». После like выбирай форму на -ing.',example:'I like playing chess. / I like reading.',extra:'В английском существует и like to play. Здесь мы закрепляем вариант like playing.'},
+ can:{title:'Что ты умеешь?',formula:'can / can’t + глагол без to',body:'После can и can’t ставим основную форму глагола: play, read, help. Не добавляем -s или -ing.',example:'I can play chess. He can play too.',extra:'Can you play? — Yes, I can. / No, I can’t.'},
+ invite:{title:'Как пригласить и предложить?',formula:'Would you like to + глагол?',body:'Would you like to play? — «Хочешь поиграть?» После to — основная форма глагола.',example:'Would you like to play? — Yes, I’d love to!',extra:'How about chess? — «Как насчёт шахмат?» Let’s play! — «Давай поиграем!» После Let’s нет to.'},
+ simple:{title:'Обычно: Present Simple',formula:'I / you / we / they play · he / she plays',body:'Для привычек и повторяющихся действий: usually, every Sunday. С he, she, it обычно добавляем к глаголу -s.',example:'We play chess every Sunday. Artyom plays too.',extra:'В отрицании: I don’t play; he doesn’t play. После doesn’t глагол без -s.'},
+ now:{title:'Сейчас: Present Continuous',formula:'am / is / are + глагол с -ing',body:'Действие происходит сейчас: now, at the moment. I am; he / she / it is; you / we / they are.',example:'I am playing now. The mice are playing too.',extra:'Нужны обе части: am/is/are и форма на -ing.'},
+ past:{title:'В определённый момент вчера',formula:'was / were + глагол с -ing',body:'Past Continuous: действие происходило в определённый момент в прошлом. I / he / she / it — was. You / we / they — were.',example:'I was playing at five yesterday. We were reading.',extra:'В вопросе was/were идёт перед подлежащим: Were you playing at five yesterday?'}
+};
+const TOPICS=[
+ {id:'like',name:'I like playing',label:'Нравится делать',example:'I like playing chess.'},
+ {id:'can',name:'I can play',label:'Умею / не умею',example:'Can you play dominoes?'},
+ {id:'invite',name:'Let’s play!',label:'Приглашения',example:'Would you like to play?'},
+ {id:'present',name:'Usually or now?',label:'Обычно или сейчас',example:'I play. / I am playing.'},
+ {id:'past',name:'Yesterday at five',label:'Вчера в определённый момент',example:'I was playing chess.'}
+];
+// Every item has one unambiguous correct option. Full answers use the same canonical data.
+const QUESTIONS=[
+ {id:1,topic:'like',rule:'like',q:'I like ___ chess.',ru:'Мне нравится играть в шахматы.',options:['playing','play','plays'],answer:'playing',why:'После like тренируем форму playing.'},
+ {id:2,topic:'like',rule:'like',q:'Artyom likes ___ books.',ru:'Артёму нравится читать книги.',options:['reading','read','reads'],answer:'reading',why:'Likes тоже сочетается с формой на -ing: likes reading.'},
+ {id:3,topic:'like',rule:'like',q:'The mice like ___ dominoes.',ru:'Мышам нравится играть в домино.',options:['playing','plays','play'],answer:'playing',why:'Like playing — «нравится играть».'},
+ {id:4,topic:'like',rule:'like',q:'I don’t like ___ football.',ru:'Мне не нравится играть в футбол.',options:['playing','play','played'],answer:'playing',why:'В отрицании модель сохраняется: don’t like playing.'},
+ {id:5,topic:'like',rule:'like',q:'What do you like ___?',ru:'Что тебе нравится делать?',options:['doing','do','does'],answer:'doing',why:'После like в этой модели нужна форма doing.'},
+ {id:6,topic:'like',rule:'like',q:'We like ___ pictures.',ru:'Нам нравится рисовать картинки.',options:['drawing','draw','draws'],answer:'drawing',why:'Like drawing — «нравится рисовать».'},
+ {id:7,topic:'can',rule:'can',q:'I can ___ chess.',ru:'Я умею играть в шахматы.',options:['play','playing','plays'],answer:'play',why:'После can нужен play без окончаний.'},
+ {id:8,topic:'can',rule:'can',q:'Fat Cat can’t ___ football.',ru:'Фат Кот не умеет играть в футбол.',options:['play','to play','playing'],answer:'play',why:'После can’t нет to и -ing.'},
+ {id:9,topic:'can',rule:'can',q:'Can you ___ me?',ru:'Ты можешь мне помочь?',options:['help','helping','helps'],answer:'help',why:'В вопросе после can тоже основная форма: help.'},
+ {id:10,topic:'can',rule:'can',q:'The rocker can ___ the guitar.',ru:'Рокер умеет играть на гитаре.',options:['play','plays','playing'],answer:'play',why:'Даже с he / the rocker после can не добавляем -s.'},
+ {id:11,topic:'can',rule:'can',q:'Can you play chess? — Yes, I ___.',ru:'Ты умеешь играть в шахматы? — Да.',options:['can','do','am'],answer:'can',why:'На вопрос с can отвечаем Yes, I can.'},
+ {id:12,topic:'can',rule:'can',q:'We can ___ together.',ru:'Мы можем читать вместе.',options:['read','reading','to read'],answer:'read',why:'Can read — основная форма без to.'},
+ {id:13,topic:'invite',rule:'invite',q:'Would you ___ to play a board game?',ru:'Хочешь поиграть в настольную игру?',options:['like','likes','liking'],answer:'like',why:'Приглашение начинается с Would you like to…?'},
+ {id:14,topic:'invite',rule:'invite',q:'Would you like ___ play chess?',ru:'Хочешь поиграть в шахматы?',options:['to','for','at'],answer:'to',why:'Перед действием в приглашении ставим to: would like to play.'},
+ {id:15,topic:'invite',rule:'invite',q:'Would you like to ___ with us?',ru:'Хочешь поиграть с нами?',options:['play','playing','plays'],answer:'play',why:'После would like to нужна основная форма play.'},
+ {id:16,topic:'invite',rule:'invite',q:'How ___ dominoes?',ru:'Как насчёт домино?',options:['about','much','time'],answer:'about',why:'How about…? — предлагаем вариант.'},
+ {id:17,topic:'invite',rule:'invite',q:'Let’s ___ together!',ru:'Давай поиграем вместе!',options:['play','to play','playing'],answer:'play',why:'После Let’s ставим play без to.'},
+ {id:18,topic:'invite',rule:'invite',q:'Would you like to play? — Yes, I’d ___ to!',ru:'Хочешь поиграть? — Да, с удовольствием!',options:['love','loving','loves'],answer:'love',why:'Вежливое согласие: Yes, I’d love to!'},
+ {id:19,topic:'present',rule:'simple',q:'We ___ chess every Sunday.',ru:'Мы играем в шахматы каждое воскресенье.',options:['play','are playing','plays'],answer:'play',why:'Every Sunday — привычка. С we используем play.'},
+ {id:20,topic:'present',rule:'now',q:'Look! Artyom ___ chess now.',ru:'Смотри! Артём сейчас играет в шахматы.',options:['is playing','plays','are playing'],answer:'is playing',why:'Now — сейчас; Artyom = he, поэтому is playing.'},
+ {id:21,topic:'present',rule:'simple',q:'Fat Cat usually ___ books after school.',ru:'Фат Кот обычно читает книги после школы.',options:['reads','is reading','read'],answer:'reads',why:'Usually — привычка. Fat Cat = he, добавляем -s.'},
+ {id:22,topic:'present',rule:'now',q:'The mice ___ dominoes at the moment.',ru:'Мыши играют в домино в данный момент.',options:['are playing','play','is playing'],answer:'are playing',why:'At the moment — сейчас; the mice = they, поэтому are playing.'},
+ {id:23,topic:'present',rule:'simple',q:'Artyom ___ like playing football.',ru:'Артёму не нравится играть в футбол.',options:['doesn’t','isn’t','don’t'],answer:'doesn’t',why:'Artyom = he. Отрицание перед like: doesn’t like.'},
+ {id:24,topic:'present',rule:'now',q:'I ___ reading a book now.',ru:'Я сейчас читаю книгу.',options:['am','is','are'],answer:'am',why:'С I используется am: I am reading.'},
+ {id:25,topic:'past',rule:'past',q:'At five yesterday, I ___ chess.',ru:'Вчера в пять я играл в шахматы.',options:['was playing','am playing','play'],answer:'was playing',why:'Указан момент в прошлом. С I: was playing.'},
+ {id:26,topic:'past',rule:'past',q:'At six yesterday, the mice ___ dominoes.',ru:'Вчера в шесть мыши играли в домино.',options:['were playing','are playing','was playing'],answer:'were playing',why:'The mice = they. В прошлом: were playing.'},
+ {id:27,topic:'past',rule:'past',q:'At seven yesterday, Artyom ___ a book.',ru:'Вчера в семь Артём читал книгу.',options:['was reading','is reading','were reading'],answer:'was reading',why:'Artyom = he, значит was. Действие в момент прошлого: was reading.'},
+ {id:28,topic:'past',rule:'past',q:'What ___ you doing at five yesterday?',ru:'Что ты делал вчера в пять?',options:['were','are','was'],answer:'were',why:'С you используем were. В вопросе were стоит перед you.'},
+ {id:29,topic:'past',rule:'past',q:'We ___ playing chess at four yesterday.',ru:'Мы играли в шахматы вчера в четыре.',options:['were','was','are'],answer:'were',why:'We → were. Yesterday at four — момент в прошлом.'},
+ {id:30,topic:'past',rule:'past',q:'Fat Cat was ___ a book at eight yesterday.',ru:'Фат Кот читал книгу вчера в восемь.',options:['reading','read','reads'],answer:'reading',why:'После was для длительного действия нужна форма reading.'}
+];
+const $=id=>document.getElementById(id);
+const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
+const escapeHTML=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let state=null,lastSetup=null,returnFocus=null;
+function screen(name){for(const id of ['menu','exercise','results'])$(id).hidden=id!==name;window.scrollTo(0,0);}
+function showDialog(title,html){returnFocus=document.activeElement;$('ruleTitle').textContent=title;$('ruleContent').innerHTML=html;if(!$('ruleDialog').open)$('ruleDialog').showModal();$('ruleOK').focus();}
+function ruleHTML(key){const r=RULES[key];return `<div class="formula">${escapeHTML(r.formula)}</div><p class="rule-body">${escapeHTML(r.body)}</p><p class="rule-example" lang="en">${escapeHTML(r.example)}</p><p class="note">${escapeHTML(r.extra)}</p>`;}
+function openRule(key,question=null,kind='manual'){
+ if(state&&$('exercise').hidden===false&&kind==='manual'){state.records[state.index].hint=true;updateScore();}
+ let html=ruleHTML(key);
+ if(question)html+=`<div class="modal-answer"><p>${escapeHTML(question.why)}</p><p class="note">Закрой правило и попробуй выбрать ответ ещё раз.</p></div>`;
+ showDialog(kind==='error'?'Вспомним правило':RULES[key].title,html);
+}
+function closeDialog(){if($('ruleDialog').open)$('ruleDialog').close();}
+$('closeRule').onclick=closeDialog;$('ruleOK').onclick=closeDialog;
+$('ruleDialog').addEventListener('close',()=>{if(returnFocus&&returnFocus.isConnected&&!returnFocus.disabled)returnFocus.focus();else if(!$('exercise').hidden)$('sentence').focus();});
+$('ruleDialog').addEventListener('click',e=>{if(e.target===$('ruleDialog')){const b=$('ruleDialog').getBoundingClientRect();if(e.clientX<b.left||e.clientX>b.right||e.clientY<b.top||e.clientY>b.bottom)closeDialog();}});
+function allRules(){showDialog('Короткие правила','<div class="rules-list">'+Object.entries(RULES).map(([k,r])=>`<button data-rule="${k}">${escapeHTML(r.title)}</button>`).join('')+'</div>');document.querySelectorAll('[data-rule]').forEach(b=>b.onclick=()=>openRule(b.dataset.rule));}
+function start(ids,mode='practice',label='Все темы'){
+ const questions=shuffle(ids.map(id=>QUESTIONS.find(q=>q.id===id)));
+ state={questions,index:0,mode,label,records:questions.map(()=>({choices:[],hint:false,done:false}))};lastSetup={ids:[...ids],mode,label};screen('exercise');renderQuestion();
+}
+function startTest(){const ids=TOPICS.flatMap(t=>shuffle(QUESTIONS.filter(q=>q.topic===t.id)).slice(0,3).map(q=>q.id));start(ids,'test','Смешанный тест');}
+function renderQuestion(){
+ const q=state.questions[state.index],rec=state.records[state.index];$('modeTag').textContent=state.mode==='test'?'ТЕСТ':'ТРЕНИРОВКА';$('counter').textContent=`${state.index+1} из ${state.questions.length}`;
+ $('topicTag').textContent=state.mode==='test'?'Выбери подходящую форму':TOPICS.find(t=>t.id===q.topic).label;
+ const percent=Math.round(state.index/state.questions.length*100);$('bar').style.width=percent+'%';$('progress').setAttribute('aria-valuenow',percent);
+ $('sentence').innerHTML=escapeHTML(q.q).replace('___','<span class="blank" aria-label="пропуск">…</span>');$('sentence').lang='en';$('translation').textContent=q.ru;
+ $('answers').innerHTML='';shuffle(q.options).forEach((value,i)=>{const b=document.createElement('button');b.className='answer';b.dataset.value=value;b.innerHTML=`<span class="key" aria-hidden="true">${i+1}</span><span lang="en">${escapeHTML(value)}</span>`;b.onclick=()=>choose(value,b);$('answers').appendChild(b);});
+ $('feedback').textContent=state.mode==='test'?'В тесте принимается один ответ. Разбор появится в конце.':'Выбери вариант. Если трудно — открой правило.';$('next').disabled=true;$('next').textContent=state.index===state.questions.length-1?'Результат →':'Дальше →';updateScore();$('sentence').focus();
+}
+function updateScore(){if(!state)return;const hints=state.records.filter(r=>r.hint).length;const right=state.records.filter((r,i)=>r.choices[0]===state.questions[i].answer).length;$('score').textContent=state.mode==='test'?`Правило открыто в ${hints} заданиях`:`С первой попытки: ${right} · Подсказки: ${hints}`;}
+function choose(value,button){
+ const q=state.questions[state.index],rec=state.records[state.index];if(rec.done||rec.choices.includes(value))return;rec.choices.push(value);
+ if(state.mode==='test'){
+  rec.done=true;button.classList.add('selected');document.querySelectorAll('.answer').forEach(b=>b.disabled=true);$('feedback').textContent='Ответ принят. Переходи дальше.';$('next').disabled=false;$('next').focus();
+ }else if(value===q.answer){
+  rec.done=true;button.classList.add('correct');document.querySelectorAll('.answer').forEach(b=>b.disabled=true);$('feedback').innerHTML=`<span class="good">${rec.choices.length===1?'Верно!':'Теперь верно!'}</span> ${escapeHTML(q.why)}`;$('next').disabled=false;$('next').focus();
+ }else{
+  button.disabled=true;button.classList.add('wrong');$('feedback').innerHTML='<span class="bad">Пока не подходит.</span> Вспомни правило и попробуй ещё раз.';openRule(q.rule,q,'error');
+ }updateScore();
+}
+function next(){if(!state||!state.records[state.index].done)return;if(state.index+1===state.questions.length)finish();else{state.index++;renderQuestion();}}
+function finish(){
+ screen('results');const right=state.records.filter((r,i)=>r.choices[0]===state.questions[i].answer).length;const hints=state.records.filter(r=>r.hint).length;const wrong=state.questions.filter((q,i)=>state.records[i].choices[0]!==q.answer);state.mistakes=wrong.map(q=>q.id);
+ $('resultTitle').textContent=right===state.questions.length?'Все ответы верны с первой попытки!':right>=state.questions.length*.7?'Хорошая работа! Закрепим трудные места.':'Разберём ошибки и попробуем ещё раз.';
+ $('resultText').textContent=state.mode==='test'?`${state.label}. Считается первый выбранный ответ. Если ты открывал правила, результат получен с подсказками.`:`${state.label}. Ты завершил все задания. Баллы считаются по первой попытке, даже если затем ответ исправлен.`;
+ $('stats').innerHTML=`<div class="stat"><strong>${right} / ${state.questions.length}</strong><span>с первой попытки</span></div><div class="stat"><strong>${wrong.length}</strong><span>заданий для повторения</span></div><div class="stat"><strong>${hints}</strong><span>заданий с подсказкой</span></div>`;
+ $('retryMistakes').hidden=!wrong.length;$('review').innerHTML='';
+ state.questions.forEach((q,i)=>{const rec=state.records[i],correct=rec.choices[0]===q.answer;const box=document.createElement('div');box.className='review';box.innerHTML=`<p class="${correct?'good':'bad'}">${i+1}. ${correct?'Верно с первой попытки':'Нужно повторить'}${rec.hint?' · с подсказкой':''}</p><p class="solution" lang="en">${escapeHTML(q.q.replace('___',q.answer))}</p><p>${escapeHTML(q.ru)}</p>${correct?'':`<p>Первый ответ: <strong lang="en">${escapeHTML(rec.choices[0]||'—')}</strong></p>`}<p>${escapeHTML(q.why)}</p><button class="small secondary">Открыть правило</button>`;box.querySelector('button').onclick=()=>openRule(q.rule);$('review').appendChild(box);});$('resultTitle').focus();
+}
+function home(){screen('menu');$('allPractice').focus();}
+$('home').onclick=home;$('resultHome').onclick=home;$('allRules').onclick=allRules;$('allPractice').onclick=()=>start(QUESTIONS.map(q=>q.id));$('next').onclick=next;$('hint').onclick=()=>openRule(state.questions[state.index].rule);
+$('restart').onclick=()=>start(lastSetup.ids,lastSetup.mode,lastSetup.label);$('retryMistakes').onclick=()=>start(state.mistakes,'practice','Повторение ошибок');
+TOPICS.forEach((topic,i)=>{const card=document.createElement('div');card.className='topic';card.innerHTML=`<span class="num">БЛОК ${i+1} · 6 ВОПРОСОВ</span><h3>${escapeHTML(topic.label)}</h3><p class="example" lang="en">${escapeHTML(topic.example)}</p><button>Тренироваться</button>`;card.querySelector('button').onclick=()=>start(QUESTIONS.filter(q=>q.topic===topic.id).map(q=>q.id),'practice',topic.label);$('topics').appendChild(card);});
+const testCard=document.createElement('div');testCard.className='topic test';testCard.innerHTML='<span class="num">ПРОВЕРЬ СЕБЯ · 15 ВОПРОСОВ</span><h3>Смешанный тест</h3><p>По 3 случайных вопроса из каждой темы. Правила доступны по кнопке.</p><button class="primary">Начать тест</button>';testCard.querySelector('button').onclick=startTest;$('topics').appendChild(testCard);
+document.addEventListener('keydown',e=>{if($('ruleDialog').open||$('exercise').hidden||e.altKey||e.ctrlKey||e.metaKey)return;if(['1','2','3'].includes(e.key)){e.preventDefault();const b=$('answers').children[Number(e.key)-1];if(b&&!b.disabled)b.click();}else if(e.key==='Enter'&&!$('next').disabled&&document.activeElement.tagName!=='BUTTON'){e.preventDefault();next();}});
+</script>
+</body>
+</html>
